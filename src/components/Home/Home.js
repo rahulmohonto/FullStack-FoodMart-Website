@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import ShowItem from '../ShowItems/ShowItem';
+import './Home.css'
 
 const Home = () => {
+
+    const [product, setProduct] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:4200/products')
+            .then(res => res.json())
+            .then(data => setProduct(data))
+
+        // setProduct(FakeData)
+        // console.log(product)
+    }, [])
+
     return (
-        <div>
-            <h3>This is for mapping products and items</h3>
+        <div className="container text-light mt-5">
+            <h3 className="text-info text-center">Buy fresh and new foods and grocery items from FoodMart</h3>
+            <div className="row main">
+
+                {
+                    product.map(products =>
+                        <ShowItem key={products._id} products={products}></ShowItem>)
+                }
+            </div>
         </div>
     );
 };
