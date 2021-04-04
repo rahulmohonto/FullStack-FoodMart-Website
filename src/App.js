@@ -10,13 +10,15 @@ import {
 import Orders from './components/Orders/Orders';
 import Login from './components/Login/Login';
 import Admin from './components/Admin/Admin';
+import ManageProduct from './components/ManageProduct/ManageProduct';
+import CheckOut from './components/CheckOut/CheckOut';
 // import AddEvents from './components/AddEvents/AddEvents';
 
 function App() {
   return (
     <Router>
       <div>
-        <nav>
+        <nav className="navbar-nav">
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -28,7 +30,7 @@ function App() {
               <Link to="/admin">Admin</Link>
             </li>
             <li>
-              <Link to="/products">Manage Product</Link>
+              <Link to="/manageProduct">Manage Product</Link>
             </li>
             <li>
               <Link to="/login">Login</Link>
@@ -47,8 +49,14 @@ function App() {
           <Route path="/admin">
             <Admin></Admin>
           </Route>
+          <Route path="/details/:_id">
+            <CheckOut></CheckOut>
+          </Route>
           <Route path="/login">
             <Login></Login>
+          </Route>
+          <Route path="/manageProduct">
+            <ManageProduct></ManageProduct>
           </Route>
         </Switch>
       </div>

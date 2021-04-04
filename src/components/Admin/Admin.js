@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import FakeData from '../FakeData/FakeData.json'
 import { useForm } from "react-hook-form";
+import './Admin.css'
 
 const Admin = () => {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -12,7 +13,8 @@ const Admin = () => {
         const eventData = {
             name: data.name,
             image: image,
-            price: data.price
+            price: data.price,
+            type: data.type
         }
         const url = `http://localhost:4200/addProduct`;
         console.log(eventData)
@@ -48,18 +50,19 @@ const Admin = () => {
     }
     return (
         <div>
-            <h5>add items and items list</h5>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <h5 className="text-center">Add Food & Grocery items</h5>
+            <div className="form-container mt-4 p-5">
+                <form className="field w-50 justify-content-center" onSubmit={handleSubmit(onSubmit)}>
 
-                <input name="name" defaultValue="New Avaiable Product" />
-                <input name="price" defaultValue="price" type="number" />
-                <br />
-                <input name="exampleRequired" type="file" onChange={handleImageUpload} />
-                <br />
+                    <input name="name" className="form" defaultValue="New Avaiable Product" {...register("name")} />
+                    <input name="type" className="form" defaultValue="product Type" {...register("type")} />
+                    <input name="price" className="form" defaultValue="price" type="number" {...register("price")} />
+                    <br />
+                    <input name="exampleRequired" className="form" type="file" onChange={handleImageUpload} />
 
-
-                <input type="submit" />
-            </form>
+                    <input className="form" type="submit" />
+                </form>
+            </div>
         </div>
     );
 };
