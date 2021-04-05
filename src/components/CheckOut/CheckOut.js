@@ -19,7 +19,7 @@ const CheckOut = () => {
             await axios.get(`http://localhost:4200/products`)
 
                 .then(res => setCheckOut(res.data))
-            console.log(checkOut)
+            // console.log(checkOut)
         }
         fetchData();
     }, [checkOut])

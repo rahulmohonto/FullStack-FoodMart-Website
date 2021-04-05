@@ -6,7 +6,13 @@ const Orders = () => {
     const [orders, setOrders] = useState([]);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     useEffect(() => {
-        fetch('http://localhost:4200/showOrders?email=' + loggedInUser.email)
+        fetch('http://localhost:4200/showOrders?email=' + loggedInUser.email, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${sessionStorage.getItem('token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setOrders(data))
 

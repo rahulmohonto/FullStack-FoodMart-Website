@@ -39,7 +39,7 @@ const Login = () => {
                 sessionStorage.setItem('token', idToken);
                 console.log(idToken)
             }).catch(function (error) {
-                // Handle error
+                console.log(error)
             });
     }
 
