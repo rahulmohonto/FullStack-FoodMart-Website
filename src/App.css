@@ -2,3 +2,19 @@
   text-align: center;
 }
 
+.link-container{
+  background-color:linear-gradient(to right, red, green, blue);
+  margin:10px;
+  padding:20px;
+  text-align: right;
+} 
+.link{
+  margin:10px;
+ color:rgb(240, 231, 236);
+  text-align: center;
+  text-decoration: none;
+  
+}
+.content-container{
+  background-color:darkslateblue;
+}

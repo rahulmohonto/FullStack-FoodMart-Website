@@ -9,8 +9,6 @@ const ShowItem = (props) => {
 
 
     const history = useHistory()
-    // history.push(`/details/${_id}`)
-
     const handleBuyProduct = _id => {
         history.push(`/details/${_id}`)
         // console.log('got specific product id :', _id)

@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../../App';
 import { useParams } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 import './CheckOut.css'
 import axios from 'axios';
+import Orders from '../Orders/Orders';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 const CheckOut = () => {
 
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [checkOut, setCheckOut] = useState([]);
     const { _id } = useParams();
     // console.log(_id)
@@ -14,18 +19,28 @@ const CheckOut = () => {
             await axios.get(`http://localhost:4200/products`)
 
                 .then(res => setCheckOut(res.data))
+            console.log(checkOut)
         }
         fetchData();
     }, [checkOut])
 
-    const result = checkOut.filter(ele =>
-        (ele._id === _id)
+    const result = checkOut.filter(element =>
+        (element._id === _id)
 
     )
-    // const { name, quantity, type, price, } = result?.[0]
-    // console.log(name)
-    console.log(result?.[0])
 
+
+    const handleOrder = () => {
+
+        const newOrder = { ...loggedInUser, ...result }
+        fetch('http://localhost:4200/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newOrder)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
     return (
         <div>
             <h6>This is for product checkout</h6>
@@ -46,10 +61,15 @@ const CheckOut = () => {
 
                         <td>{result[0] && result?.[0].price}</td>
                     </tr>
+
                 </tbody>
             </Table>
 
+            <Button to="/orders" onClick={handleOrder} className="btn btn-info float-right mr-2">Order Product</Button>
 
+            <PrivateRoute path="/orders">
+                <Orders />
+            </PrivateRoute>
         </div>
     );
 };

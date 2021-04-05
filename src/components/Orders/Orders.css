@@ -1,0 +1,11 @@
+.order-list{
+    background-color:lightslategray;
+    width:60%;
+    margin-left:20%;
+    padding:10px 10px;
+    border-radius:20px
+}
+.product-container{
+border-radius: 10px;
+color:darkblue
+}

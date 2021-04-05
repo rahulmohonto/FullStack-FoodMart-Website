@@ -5,43 +5,40 @@ const ManageProduct = () => {
     const [showproducts, setShowProducts] = useState([])
 
     useEffect(() => {
-        // const url = 'http://localhost:4200/products'
-        // const { data } = axios.get(url)
-        // console.log(data)
 
         async function fetchData() {
             await axios.get('http://localhost:4200/products')
                 .then(res => setShowProducts(res.data))
+            // console.log(showproducts)
 
         }
         fetchData()
-    }, [])
+    }, [showproducts])
 
-    const deleteData = id => {
-        fetch(`/deleteProduct/${id}`)
-            .then(res => res.json())
-            .then(data => console.log(data))
-    }
 
-    // const { data } = showproducts;
-    const deleteButton = () => {
+    const LoadProduct = () => {
 
         const container = document.getElementById('productHolder');
         // container.innerHTML = '';
-        showproducts.forEach(pd => {
-            console.log(pd.name)
-            const productElement = document.createElement('div');
+        return showproducts.map(item =>
+        (
+            <div>
+                <div>
+                    <strong>{item.name}</strong>
+                    <p>{item.price}</p>
+                    <button onClick={() => deleteData(item._id)}>Delete Product</button>
+                </div>
+            </div>
+        )
+        )
 
-            productElement.innerHTML = `<div><strong>${pd.name}</strong>
-                <p>${pd.price}</p>
-                <button onClick="{()=>deleteData(pd._id)}">Delete Product</button></div>`
-            container.appendChild(productElement)
-        })
     }
 
-    deleteButton();
 
+    const deleteData = _id => {
 
+        console.log('button clicked', _id)
+    }
 
 
     return (
@@ -49,7 +46,8 @@ const ManageProduct = () => {
 
             <div id="productHolder">
                 <h3>total products : {showproducts.length}</h3>
-                <h3>This is for maneging products </h3>
+
+                <LoadProduct />
 
             </div>
         </body>

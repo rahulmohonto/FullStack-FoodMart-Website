@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import './App.css';
 import Home from './components/Home/Home';
 import {
@@ -12,55 +12,70 @@ import Login from './components/Login/Login';
 import Admin from './components/Admin/Admin';
 import ManageProduct from './components/ManageProduct/ManageProduct';
 import CheckOut from './components/CheckOut/CheckOut';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 // import AddEvents from './components/AddEvents/AddEvents';
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <nav className="navbar-nav">
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/orders">Orders</Link>
-            </li>
-            <li>
-              <Link to="/admin">Admin</Link>
-            </li>
-            <li>
-              <Link to="/manageProduct">Manage Product</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          </ul>
-        </nav>
+export const UserContext = createContext();
 
-        <hr />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/orders">
-            <Orders></Orders>
-          </Route>
-          <Route path="/admin">
-            <Admin></Admin>
-          </Route>
-          <Route path="/details/:_id">
-            <CheckOut></CheckOut>
-          </Route>
-          <Route path="/login">
-            <Login></Login>
-          </Route>
-          <Route path="/manageProduct">
-            <ManageProduct></ManageProduct>
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+function App() {
+  const [loggedInUser, setLoggedInUser] = useState({});
+  const nav = [
+    { link: '/', name: 'Home' },
+    { link: '/orders', name: 'Orders' },
+    { link: '/admin', name: 'Admin' },
+    { link: '/manageProduct', name: 'Manage Products' },
+    { link: '/login', name: 'Login' },
+  ]
+
+
+  return (
+
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
+      <Router>
+        <div className="content-container">
+          <div className="link-container">
+
+            {
+              nav.map(item => {
+                const { link, name } = item;
+                return (<Link className="link" to={link}>{name}</Link>)
+              }
+              )
+            }
+
+            {/* <Link to="/">Home</Link>
+            <Link to="/orders">Orders</Link>
+            <Link to="/admin">Admin</Link>
+            <Link to="/manageProduct">Manage Product</Link>
+            <Link to="/login">Login</Link> */}
+
+
+          </div>
+
+          <hr />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/orders">
+              <Orders></Orders>
+            </Route>
+            <PrivateRoute path="/admin">
+              <Admin></Admin>
+            </PrivateRoute>
+            <PrivateRoute path="/details/:_id">
+              <CheckOut></CheckOut>
+            </PrivateRoute>
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+            <PrivateRoute path="/manageProduct">
+              <ManageProduct></ManageProduct>
+            </PrivateRoute>
+          </Switch>
+        </div>
+      </Router>
+    </UserContext.Provider>
   );
 }
 
