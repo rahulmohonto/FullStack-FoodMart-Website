@@ -18,7 +18,7 @@ const Orders = () => {
 
 
     }, [loggedInUser.email])
-
+    console.log(setLoggedInUser)
     return (
         <div className="text-center bg-success w-75 ml-auto mr-auto p-4 product-container ">
 

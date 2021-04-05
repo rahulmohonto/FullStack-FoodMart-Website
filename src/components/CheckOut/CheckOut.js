@@ -13,6 +13,7 @@ import 'date-fns';
 const CheckOut = () => {
 
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    console.log(setLoggedInUser)
     const [checkOut, setCheckOut] = useState([]);
     const { _id } = useParams();
     // console.log(_id)
