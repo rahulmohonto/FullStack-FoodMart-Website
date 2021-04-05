@@ -1,10 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
-import './Admin.css'
+import './Admin.css';
+
 
 const Admin = () => {
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit } = useForm();
     const [image, setImage] = useState(null);
 
     const onSubmit = data => {
@@ -16,7 +17,7 @@ const Admin = () => {
             type: data.type,
             quantity: data.quantity
         }
-        const url = `http://localhost:4200/addProduct`;
+        const url = `https://polar-taiga-18543.herokuapp.com/addProduct`;
         console.log(eventData)
         fetch(url, {
             method: 'POST',
@@ -48,6 +49,8 @@ const Admin = () => {
 
 
     }
+
+
     return (
         <div>
             <h5 className="text-center">Add Food & Grocery items</h5>
@@ -62,7 +65,7 @@ const Admin = () => {
                     <br />
                     <input name="exampleRequired" className="form" type="file" onChange={handleImageUpload} />
 
-                    <input onClick={alert, 'product added successfully'} className="form" type="submit" />
+                    <input className="form" type="submit" />
                 </form>
             </div>
         </div>

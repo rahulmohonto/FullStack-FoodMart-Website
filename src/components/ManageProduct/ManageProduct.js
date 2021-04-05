@@ -7,7 +7,7 @@ const ManageProduct = () => {
     useEffect(() => {
 
         async function fetchData() {
-            await axios.get('http://localhost:4200/products')
+            await axios.get('https://polar-taiga-18543.herokuapp.com/products')
                 .then(res => setShowProducts(res.data))
             // console.log(showproducts)
 
@@ -15,11 +15,10 @@ const ManageProduct = () => {
         fetchData()
     }, [showproducts])
 
-
     const LoadProduct = () => {
 
-        const container = document.getElementById('productHolder');
-        // container.innerHTML = '';
+        // const container = document.getElementById('productHolder');
+
         return showproducts.map(item =>
         (
             <div>
@@ -35,8 +34,8 @@ const ManageProduct = () => {
     }
 
 
-    const deleteData = _id => {
-
+    const deleteData = (event, _id) => {
+        console.log(event.target)
         console.log('button clicked', _id)
     }
 

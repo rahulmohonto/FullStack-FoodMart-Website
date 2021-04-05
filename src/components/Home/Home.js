@@ -6,7 +6,7 @@ const Home = () => {
 
     const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch('http://localhost:4200/products')
+        fetch('https://polar-taiga-18543.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProduct(data))
 

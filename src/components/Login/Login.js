@@ -5,6 +5,7 @@ import "firebase/firestore";
 import firebaseConfig from './firebase.config';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
+import './Login.css'
 
 const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -46,9 +47,9 @@ const Login = () => {
 
 
     return (
-        <div>
-            <h1>This is Login</h1>
-            <button onClick={handleGoogleSignIn}>Google Sign in</button>
+        <div className="google-login-container">
+            <h1 className="text-center">This is Login</h1>
+            <button className="google-button" onClick={handleGoogleSignIn}>Google Sign in</button>
         </div>
     );
 };

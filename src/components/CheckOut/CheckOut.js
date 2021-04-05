@@ -7,6 +7,8 @@ import './CheckOut.css'
 import axios from 'axios';
 import Orders from '../Orders/Orders';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import 'date-fns';
+
 
 const CheckOut = () => {
 
@@ -16,7 +18,7 @@ const CheckOut = () => {
     // console.log(_id)
     useEffect(() => {
         async function fetchData() {
-            await axios.get(`http://localhost:4200/products`)
+            await axios.get(`https://polar-taiga-18543.herokuapp.com/products`)
 
                 .then(res => setCheckOut(res.data))
             // console.log(checkOut)
@@ -29,20 +31,21 @@ const CheckOut = () => {
 
     )
 
-
     const handleOrder = () => {
 
         const newOrder = { ...loggedInUser, ...result }
-        fetch('http://localhost:4200/orders', {
+        fetch('https://polar-taiga-18543.herokuapp.com/orders', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newOrder)
         })
             .then(res => res.json())
             .then(data => console.log(data))
+
     }
     return (
         <div>
+
             <h6>This is for product checkout</h6>
             <Table className="table" striped bordered hover size="sm">
                 <thead>
@@ -64,6 +67,7 @@ const CheckOut = () => {
 
                 </tbody>
             </Table>
+
 
             <Button to="/orders" onClick={handleOrder} className="btn btn-info float-right mr-2">Order Product</Button>
 

@@ -1,5 +1,6 @@
 .card-holder{
     color:cornflowerblue;
+    box-shadow: 4px -3px 5px rgb(5, 2, 26);
 }
 .cardImage{
     width:100%;
@@ -27,4 +28,8 @@
 .card-container{
     display:grid;
     grid-template-columns: 500px 500px 500px;
+}
+
+.card-holder:hover{
+    background-color:rgb(92, 82, 82);
 }

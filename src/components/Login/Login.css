@@ -1,0 +1,15 @@
+.google-login-container{
+    text-align: center;
+    background-color: steelblue;
+    height: 600px;
+}
+.google-button{
+    padding:10px;
+    background-color:rgb(78, 78, 175);
+    color:rgb(236, 229, 229);
+    font-size:1.2rem;
+    border-radius:10px;
+}
+.google-button:hover{
+background-color:rgb(122, 98, 37);
+}
