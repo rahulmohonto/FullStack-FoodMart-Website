@@ -20,6 +20,9 @@ const ManageProduct = () => {
         // console.log(event.target)
         fetch(`https://polar-taiga-18543.herokuapp.com/deleteProduct/${id}`, {
             method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
         })
             .then(res => res.json())
             .then(result => {
