@@ -18,7 +18,7 @@ const ManageProduct = () => {
 
     const deleteData = id => {
         // console.log(event.target)
-        fetch(`https://polar-taiga-18543.herokuapp.com/products/deleteProduct/${id}`, {
+        fetch(`https://polar-taiga-18543.herokuapp.com/deleteProduct/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())
