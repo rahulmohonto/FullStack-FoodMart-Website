@@ -15,10 +15,21 @@ const ManageProduct = () => {
         fetchData()
     }, [showproducts])
 
+
+    const deleteData = id => {
+        // console.log(event.target)
+        fetch(`https://polar-taiga-18543.herokuapp.com/products/deleteProduct/${id}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log('product deleted', result)
+            })
+        console.log('button clicked', id)
+    }
+
     const LoadProduct = () => {
-
         // const container = document.getElementById('productHolder');
-
         return showproducts.map(item =>
         (
             <div>
@@ -31,12 +42,6 @@ const ManageProduct = () => {
         )
         )
 
-    }
-
-
-    const deleteData = (event, _id) => {
-        console.log(event.target)
-        console.log('button clicked', _id)
     }
 
 
