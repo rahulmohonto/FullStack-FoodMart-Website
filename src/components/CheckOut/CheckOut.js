@@ -8,12 +8,12 @@ import axios from 'axios';
 import Orders from '../Orders/Orders';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import 'date-fns';
-import Grid from '@material-ui/core/Grid';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardDatePicker,
-} from '@material-ui/pickers';
+// import Grid from '@material-ui/core/Grid';
+// import DateFnsUtils from '@date-io/date-fns';
+// import {
+//     MuiPickersUtilsProvider,
+//     KeyboardDatePicker,
+// } from '@material-ui/pickers';
 
 
 const CheckOut = () => {
