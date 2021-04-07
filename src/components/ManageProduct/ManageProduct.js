@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ManageProduct.css';
 import Table from 'react-bootstrap/Table';
+import Alert from 'react-bootstrap/Alert';
 
 const ManageProduct = () => {
     const [showproducts, setShowProducts] = useState([])
@@ -29,7 +30,7 @@ const ManageProduct = () => {
             .then(res => res.json())
             .then(result => {
                 if (result) {
-                    alert('deleted successfully')
+                    Alert('deleted successfully')
                 }
                 console.log('product deleted', result)
             })
