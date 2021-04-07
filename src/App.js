@@ -20,6 +20,7 @@ export const UserContext = createContext();
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
   const nav = [
+
     { link: '/', name: 'Home' },
     { link: '/orders', name: 'Orders' },
     { link: '/admin', name: 'Admin' },

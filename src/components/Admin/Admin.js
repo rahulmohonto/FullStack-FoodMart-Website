@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import './Admin.css';
 
 
+
 const Admin = () => {
     const { register, handleSubmit } = useForm();
     const [image, setImage] = useState(null);
@@ -53,17 +54,17 @@ const Admin = () => {
 
     return (
         <div>
-            <h5 className="text-center">Add Food & Grocery items</h5>
+            <h5 className="header text-center"> Have Idea 🤔 About New Food <br />Add Food & Grocery items</h5>
             <div className="form-container mt-4 p-5">
                 <form className="field w-50 justify-content-center" onSubmit={handleSubmit(onSubmit)}>
 
-                    <input name="name" className="form" defaultValue="New Avaiable Product" {...register("name")} />
-                    <input name="type" className="form" defaultValue="product Type" {...register("type")} />
-                    <input name="price" className="form" defaultValue="price" type="number" {...register("price")} />
+                    <input name="name" className="form" required defaultValue="New Avaiable Product" {...register("name")} />
+                    <input name="type" className="form" required defaultValue="product Type" {...register("type")} />
+                    <input name="price" className="form" required defaultValue="price & dollar sign required" type="text"  {...register("price")} />
                     <br />
-                    <input name="quantity" className="form" defaultValue="quantity" type="number" {...register("quantity")} />
+                    <input name="quantity" className="form" required defaultValue="quantity" type="text" {...register("quantity")} />
                     <br />
-                    <input name="exampleRequired" className="form" type="file" onChange={handleImageUpload} />
+                    <input name="exampleRequired" required className="form" type="file" onChange={handleImageUpload} />
 
                     <input className="form" type="submit" />
                 </form>

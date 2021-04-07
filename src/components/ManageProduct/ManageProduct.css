@@ -1,0 +1,32 @@
+.product-container{
+    background-color:darkturquoise;
+    padding:20px;
+    margin:10px 20px;
+    width:70%;
+}
+.span-tag2{
+   margin:0 20px;
+}
+.span-tag1{
+    margin:0 20px;
+ }
+ .product-delete-button{
+     color: rgb(51, 47, 44);
+     font: 1.3em sans-serif;
+     background-color:rgb(180, 151, 140);
+     border-radius:7px;
+     padding:4px 4px;
+ }
+ .product-div{
+     width:100%;
+     /* margin-left: 2.9rem; */
+ }
+ @media (max-width:592px){
+     .product-div{
+     width:27rem;
+ }}
+ @media (max-width:592px){
+     .product-container{
+        width:28.5rem;
+     }
+ }

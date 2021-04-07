@@ -5,6 +5,8 @@ import "firebase/firestore";
 import firebaseConfig from './firebase.config';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import './Login.css'
 
 const Login = () => {
@@ -39,7 +41,7 @@ const Login = () => {
         firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
             .then(function (idToken) {
                 sessionStorage.setItem('token', idToken);
-                console.log(idToken)
+                // console.log(idToken)
             }).catch(function (error) {
                 console.log(error)
             });
@@ -49,7 +51,7 @@ const Login = () => {
 
     return (
         <div className="google-login-container">
-            <h1 className="text-center">This is Login</h1>
+            <h2 className="text-center mb-4">Want To Sign-In <br />Sign In With Google Below</h2>
             <button className="google-button" onClick={handleGoogleSignIn}>Google Sign in</button>
         </div>
     );

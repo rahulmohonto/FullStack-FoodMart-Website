@@ -23,7 +23,7 @@ const Orders = () => {
         <div className="text-center bg-success w-75 ml-auto mr-auto p-4 product-container ">
 
 
-            <h4>You have ordered {orders.length} products</h4>
+            <h4 className="text-center text-danger">You have ordered {orders.length} products</h4>
             {
                 orders.map(order => <div className="order-list text-center">
                     <h4> <span>{order[0].name}</span>  <span>{order[0].price}</span>
